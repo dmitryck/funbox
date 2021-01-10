@@ -1,0 +1,11 @@
+<div class="client">
+  <div id="currency"><%= currency %></h1>
+</div>
+
+<script>
+  var socket = new WebSocket('<%= socket_url %>');
+
+  socket.onmessage = function(event) {
+    document.getElementById('currency').innerHTML = event.data
+  }
+</script>

@@ -1,0 +1,15 @@
+<div class="admin">
+  <input id="currency" type="text" placeholder="Currency" value="<%= currency %>" autocomplete="off">
+  <input id="datetime" type="text" placeholder="Datetime" value="<%= time %>" autocomplete="off">
+  <input type="button" value="Lock currency" onclick="socketSend()"/>
+</div>
+
+<script>
+  var socket = new WebSocket('<%= socket_url %>');
+
+  function socketSend(){
+    socket.send(document.getElementById('currency').value + (
+      (t = document.getElementById('datetime').value) ? '<%= sep %>' + t : '')
+    )
+  }
+</script>
